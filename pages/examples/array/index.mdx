@@ -1,0 +1,94 @@
+import Blog from "/components/blog"
+
+export const meta = {
+  title: 'Blog Title',
+  author: 'Blog Author'
+}
+
+## Simulating the implementation of the JS Array.
+
+***Coding Period***：*13-15 years old*
+
+I have also written Array methods such as map, reduce, forEach, but unfortunately I did not keep them.
+
+```javascript
+var Arr=function () {
+  this.length=0;
+  var {length}=arguments;
+  var i = 0;
+  while (i<length) {
+    this[i]=arguments[i];
+    i++
+  }
+  this.length=i;
+}
+
+Arr.prototype={
+  filter:function (fn) {
+    var arr={};
+    for (var i = 0; i < this.length; i++) {
+      if(fn(this[i])!=undefined)arr[i]=this[i]
+    }
+    return arr;
+  },
+  indexOf:function (item,start) {
+    if (!start) start=0;
+    for (var i = start; i < this.length; i++) {
+      if(this[i]==item)return i;
+    }
+    return -1;
+  },
+  lastIndexOf:function (item,start) {
+    if (!start) start=this.length;
+    for (var i = start; i > -1; i--) {
+      if(this[i]==item)return i;
+    }
+    return -1;
+  },
+  push:function (thing) {
+    console.log(this);
+    this[this.length]=thing
+    this.length++;
+    return this
+  },
+  slice:function (start,end) {
+    if (!end)end=this.length;
+    var arr = {};
+    var m = 0;
+    for (var i = start; i < end; i++) {
+      arr[m]=this[i]
+      m++;
+    }
+    return arr;
+  },
+  pop:function () {
+    var arr = {};
+    for (var i = 0; i < this.length-1; i++) {
+      arr[i]=this[i]
+    }
+    this.length--;
+    return arr;
+  },
+  shift:function () {
+    var arr = {};
+    for (var i = 0; i < this.length-1; i++) {
+      arr[i]=this[i+1]
+    }
+    this.length--;
+    return arr;
+  },
+  unshift:function (thing) {
+    var a,b;
+    for (var i = 0; i < this.length-1; i++) {
+      a=this[i+1]
+      if (i==0){
+        this[0]=thing
+        this[1]=a;
+      }else this[i]=a
+    }
+    this.length++;
+
+  }
+}
+```
+export default ({children}) => <Blog meta={meta}>{children}</Blog>

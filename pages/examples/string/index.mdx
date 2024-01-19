@@ -1,0 +1,125 @@
+import Blog from "/components/blog"
+
+export const meta = {
+  title: 'Blog Title',
+  author: 'Blog Author'
+}
+
+## Simulating the implementation of JS String member functions.
+
+***Coding Period***：*13-15 years old*
+
+When I write these codes, I don't strictly adhere to the API of strings. I often incorporate my own practical needs by adding new members or introducing additional parameters.
+
+```nodejs
+function replace(str,find,rep) {
+  var place = 0;
+  var restr;
+  var arr = [];
+  var positionarray = [];
+  while (true) {
+    place=str.indexOf(find,place);
+    if (place==-1) break;
+    positionarray.push(place);
+    place+=find.length;
+  }
+  var n =0;
+  for (var i = 0; i < str.length; i++) {
+    if(i==positionarray[n]){
+      arr.push(rep);
+      n++;
+      i+=rep.length-1;
+    }
+    arr.push(str[i]);
+  }
+  arr=arr.join('');
+  return arr;
+}
+
+function replaceone(str,find,rep) {
+  var place = str.indexOf(find);
+  var str1='';
+  var str2='';
+  str1=str.slice(0,place);
+  str2=str.slice(place+find.length);
+  place+=find.length
+  var newstr=str1+rep+str2;
+  while (true) {
+    place = newstr.indexOf(find,place);
+    if(place==-1) break;
+    str1=newstr.slice(0,place);
+    str2=newstr.slice(place+find.length);
+    newstr=str1+rep+str2;
+    place+=find.length;
+  }
+  return newstr;
+}
+
+str = "ac出生jfjjchu出生加快了经济"
+var replace1 = function(str1,str2,str3){
+  var i = 0
+  var r = -1
+  var str4 = '';
+  while(i<str1.length){
+    r = str1.indexOf(str2,i)
+    if(r<0){
+      str4 += str1.slice(i)
+      return str4
+    }
+    str4 += str1.slice(i,r) + str3
+    i = r + str2.length
+  }
+  return str4
+}
+function indexOf(str,find,start) {
+  if (!start) start=0;
+  for (var i = start; i < str.length; i++) {
+    if (str[i]==find) return i;
+  }
+  return -1;
+}
+
+function repeat(str,times) {
+  var string='';
+  for (var i = 0; i < times; i++) {
+    string+=str
+  }
+  return string;
+}
+
+function upsidedown(string) {
+  var str = '';
+  for (var i = string.length-1; i > -1; i--) {
+    str+=string[i];
+  }
+  return str;
+}
+
+function space(string) {
+  var str = '';
+  var i = 0;
+  var place=string.indexOf(' ');
+  place++;
+  i = string.length;
+  while (true) {
+    var placetwo=string.indexOf(' ',i--);
+    if (placetwo==-1)break;
+  }
+  placetwo=i
+  // console.log(place,placetwo);
+  for (var n = place; n < placetwo; n++) {
+    str+=string[n]
+  }
+  return str;
+}
+
+function only(out,string) {
+  var str = '';
+  for (var i = 0; i < string.length; i++) {
+    if (string[i]!==out) str+=string[i];
+  }
+  return str;
+}
+module.exports=indexOf;
+```
+export default ({children}) => <Blog meta={meta}>{children}</Blog>

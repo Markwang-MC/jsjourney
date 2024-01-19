@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+.vertical-line{
+  position: relative;
+}
+.vertical-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;     /* 线条宽度 */
+  background-color: black;
+  z-index: -30;  /* 线条颜色 */
+}
+code{
+  background: #314148;
+  color: white;
+  font-size: small;
+  display: block;
+  overflow-x: auto;
+  padding: 25px;
+  border-radius: .375rem
+}
+
+.blog h2{
+  font-size: 25px;
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+.blog h3{
+
+}
+.blog p{
+  margin-bottom: 35px;
+}
+.wow {
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.wow.wow-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fadeInLeft{
+  transform: translateX(-200px);
+}
+.fadeInRight{
+  transform: translateX(200px);
+}
+.fadeIn{
+  transform: translateX(50px);
+}
