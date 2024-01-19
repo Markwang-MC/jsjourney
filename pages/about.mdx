@@ -1,0 +1,21 @@
+import About from "/components/about"
+
+export const meta = {
+  title: 'Blog Title',
+  author: 'Blog Author'
+}
+
+## My Story of Studying JS Programming
+
+My parents and sister are all self-taught programmers. They have influenced me greatly and sparked my interest in programming at a young age. As a little kid, I would often sneak into their workspace to watch them write code. Especially when one of them would show me the magical effects of their code, I would eagerly ask them to teach me programming.
+
+<div className="m-5">![图片描述](/images/me.jpg)</div>
+
+When I was around 12 or 13 years old, I started learning JavaScript. Perhaps it was due to my parents' teaching methods, as they were former teachers, or maybe my interest played a role, but ever since I started learning, I quickly became proficient in areas like Node.js and web development. I would occasionally write impressive code like my parents and sister, which would earn me applause for my outstanding performance.
+
+My parents told me that learning programming is not only about using the tools created by experts to solve problems but also about being able to create tools like the experts themselves. Therefore, in my journey of learning programming, I not only spent a lot of time doing problem-oriented exercises, such as building a web server using Express and middleware, or drawing clocks on canvas elements, and so on, but I also occasionally reverse-engineered some basic programming tools and created my own versions. For example, I wrote my own versions of string and array member functions, as well as frameworks like Express and Hexo, the Node.js require function, the promise asynchronous handling mechanism, and the body parser, among others. Unfortunately, most of the code has been lost, and only a few survivors remain for demonstration purposes.
+
+Being able to learn programming from a young age is a great privilege. It not only gives me a special advantage over my peers but, more importantly, when it comes time to apply for college, I will confidently choose a major in computer programming. I have already locked my career path as a programmer.
+
+
+export default ({children}) => <About meta={meta}>{children}</About>

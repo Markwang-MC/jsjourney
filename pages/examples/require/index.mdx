@@ -1,0 +1,22 @@
+import Blog from "/components/blog"
+
+
+## Simulating a Simple Implementation of Node.js Module Loading Function
+
+***Coding Period***: *15 year old*
+
+As I began learning Node.js, I found the require function to be quite mysterious. However, as my understanding of programming deepened, I finally began to perceive the fundamental principle inside require: it reads the code from a file, converts it into a function object, and executes it, ultimately returning the modified module object's exported members to the user.
+
+```nodejs
+function _require(path) {
+  const fs = require('fs');
+  var file = fs.readFileSync(path,'UTF8');
+  var obj = {exports:{}}
+  var newfun=new Function('var [exports,require,module]=arguments;'+file)
+  newfun(obj.exports,myrequire,obj);
+  return obj.exports;
+}
+```
+
+
+export default ({children}) => <Blog>{children}</Blog>

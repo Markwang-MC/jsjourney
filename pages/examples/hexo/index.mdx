@@ -1,0 +1,131 @@
+import Blog from "/components/blog"
+
+export const meta = {
+  title: 'Blog Title',
+  author: 'Blog Author'
+}
+
+## Simulating the implementation of the HexoJS framework.
+
+***Coding Period***：*15 years old*
+
+Hexojs is developed using Node.js, and its core concept is to batch convert markdown files with templates into HTML markup. I write these codes in an attempt to gain a deep understanding of Hexo's operational mechanism.
+
+```javascript
+function markdown(file_path) {
+  function isletter(char) {
+    var reg = /[a-zA-Z ]/;
+    return reg.test(char)==true;
+  }
+  function firstL(str,i) {
+    if (!i) i = 0;
+    while (i<str.length) {
+      if (isletter(str[i])) return i;
+      i++;
+    }
+    return -1;
+  }
+  const fs = require('fs');
+  var file=fs.readFileSync(file_path,'utf8');
+  function yaml(file) {
+    var place=file.indexOf('---');
+    if (place>-1) {
+      var placetwo = file.indexOf('---',place+1);
+      var yaml=file.slice(place+3,placetwo);
+      return yaml;
+    }
+  }
+
+  function content(file) {
+    var place=file.indexOf('---',1);
+    if (place>-1) {
+      var content=file.slice(place+3);
+      return content;
+    }
+  }
+
+  function html(content) {
+    content=JSON.stringify(content);
+    var arr = [];
+    var position = content.indexOf('\\n',3);
+    var part = content.slice(3,position);
+    arr.push(part);
+    while (true) {
+      var positiontwo = content.indexOf('\\n',position+3);
+      if (positiontwo<0) return arr;
+      part = content.slice(position+2,positiontwo);
+      position=positiontwo;
+      arr.push(part);
+    }
+  }
+
+
+  var contentpart = content(file)
+  var yamlpart = yaml(file)
+  var contentarray = html(contentpart)
+  function h(str,type) {
+    if (!type||type>6) type=1;
+    return `<h${type}>${str}</h${type}>`;
+  }
+
+  function htag(str) {
+    var string;
+    str.replace(/\#{1,6}.+/,function (a,b) {
+      var content = str.slice(firstL(str)+1);
+      string=h(content,firstL(str));
+    });
+    if (string===str) return undefined;
+    return string;
+  }
+
+  function delet(str) {
+   var string = str.replace(/\~~.+\~~/,function (a,b) {
+      var content = str.slice(firstL(str),str.indexOf('~~',1));
+      return `<del>${content}</del>`;
+    });
+    if (string===str) return undefined;
+    return string;
+  }
+
+  function letterform(str) {
+    var string = str.replace(/\*{1,3}(.+[^\*])\*{1,2}/,function (a,b) {
+      if (a.indexOf('**')>-1) return `<strong>${b}</strong>`;
+      if (a.indexOf('***')>-1) return `<strong><em>${b}</em><strong>`;
+      return `<em>${str}</em>`;
+    })
+    if (string===str) return undefined;
+    return string;
+  }
+
+  function hyperlink(str) {
+  //  str.replace(/\[(.+)\]\((.+)\)/g,"<a href=\"$2\">$1</a>")
+    var string = str.replace(/(\!?)\[([^\[\]]+)\]\(([^\(\)]+)\)/g,function (a,b,c,d) {
+      if(b=='!')return `<img alt="${c}" src="${d}">`
+      return `<a href=\"${d}\">${c}</a>`;
+    })
+    if (string===str) return undefined;
+    return string;
+  }
+
+  function ulli(str) {
+    var string=str.replace(/^-\s.+/,function (a,b) {
+      return a.slice(b+2);
+    });
+    if (string===str) return undefined;
+    return `<li>${string}</li>`;
+  }
+
+  function olli(str) {
+    var string=str.replace(/\d\.\s.+/,function (a,b) {
+      return a.slice(b+2);
+    });
+    if (string===str) return undefined;
+    return `<li>${string}</li>`;
+  }
+
+  return letterform(contentarray[8]);
+
+}
+console.log(markdown('markdown.md'))
+```
+export default ({children}) => <Blog meta={meta}>{children}</Blog>
