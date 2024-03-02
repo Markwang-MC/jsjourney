@@ -114,6 +114,16 @@ export default function Index() {
             </p>
             <div className="mt-5"><Link href="/examples/latest" className="not-italic bg-black text-white py-[10px] px-[20px] text-[16px] transition hover:bg-blue-400">Open Source</Link></div>
           </Middle>
+          <Display {...{
+            description:"UTJS was developed with only 31 rows of codes, making it not only easy to use in your developing, but also for you to read its source codes for study or something eles.",
+            photo:"/images/YUTJS.png",
+            link:"/examples/yutjs",
+            direction:1
+          }}>
+            <p>YUTJS</p>
+            <p>Powerful JS template</p>
+            <p>similar to EJS</p>
+          </Display>
       </div>
 
   )
