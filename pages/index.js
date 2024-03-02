@@ -106,14 +106,6 @@ export default function Index() {
             <p>to improve</p>
             <p>English listening</p>
           </Display>
-          <Middle>
-            <Number number="17" />
-            <p className="">This website</p>
-            <p className="text-sm font-sans lowercase not-italic">
-              This website is my latest work, powered by Next.js and React.js, to showcase every stage of my programming learning journey.
-            </p>
-            <div className="mt-5"><Link href="/examples/latest" className="not-italic bg-black text-white py-[10px] px-[20px] text-[16px] transition hover:bg-blue-400">Open Source</Link></div>
-          </Middle>
           <Display {...{
             description:"UTJS was developed with only 31 rows of codes, making it not only easy to use in your developing, but also for you to read its source codes for study or something eles.",
             photo:"/images/YUTJS.png",
@@ -124,6 +116,15 @@ export default function Index() {
             <p>Powerful JS template</p>
             <p>similar to EJS</p>
           </Display>
+          <Middle>
+            <Number number="17" />
+            <p className="">This website</p>
+            <p className="text-sm font-sans lowercase not-italic">
+              This website is my latest work, powered by Next.js and React.js, to showcase every stage of my programming learning journey.
+            </p>
+            <div className="mt-5"><Link href="/examples/latest" className="not-italic bg-black text-white py-[10px] px-[20px] text-[16px] transition hover:bg-blue-400">Open Source</Link></div>
+          </Middle>
+
       </div>
 
   )
