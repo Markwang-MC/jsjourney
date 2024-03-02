@@ -116,7 +116,7 @@ export default function Index() {
           </Middle>
           <Display {...{
             description:"UTJS was developed with only 31 rows of codes, making it not only easy to use in your developing, but also for you to read its source codes for study or something eles.",
-            photo:"/images/YUTJS.png",
+            photo:"/images/YUTJS.jpg",
             link:"/examples/yutjs",
             direction:1
           }}>
